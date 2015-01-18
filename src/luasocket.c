@@ -18,6 +18,11 @@
 #include "lua.h"
 #include "lauxlib.h"
 
+#if LUA_VERSION_NUM > 502
+# ifndef luaL_checkint
+# define luaL_checkint(L,n)	((int)luaL_checkinteger(L, (n)))
+# endif
+#endif
 
 /*=========================================================================*\
 * LuaSocket includes
